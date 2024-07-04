@@ -1,13 +1,19 @@
-const Sequelize = require("sequelize");
+const { Sequelize } = require('sequelize');
 
-const database = new Sequelize.Sequelize(
-  process.env.DB_URI,
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.HOST,
-    dialect: "postgres",
-  }
-);
+const database = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'Uvents.sqlite',
+});
+
+//Test
+async function test() {
+    try {
+        await database.authenticate();
+        console.log('SQLite3 connected');
+    } catch (error) {
+        console.error('SQLite3 connection failed', error);
+    }
+}
+test();
 
 module.exports = database;
