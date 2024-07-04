@@ -10,6 +10,52 @@ const ConsumerUser = database.define('ConsumerUser', {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
     },
+    role: {
+        type: Sequelize.DataTypes.ENUM,
+        values: ['consumerUser, commercialUser, adminUser'],
+        allowNull: false,
+    },
+    username: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
+    socialMediaID: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
+    password: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
+    passwordReset: {
+        type: Sequelize.DataTypes.BOOLEAN,
+        allowNull: true,
+    },
+    resetTokenExpiration: {
+        type: Sequelize.DataTypes.DATE,
+        allowNull: true,
+    },
+    email: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
+    phoneNumber: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
+    eventsAttended: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: true,
+    },
+    eventsHosted: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: true,
+    },
+    gender: {
+        type: Sequelize.DataTypes.ENUM,
+        values: ['male', 'female'],
+        allowNull: false,
+    },
 });
 
 //Event.belongsTo(CommercialUser, {foreignKey: 'commercialUserId'});
