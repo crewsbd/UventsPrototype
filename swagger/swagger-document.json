@@ -11,6 +11,46 @@
     "http"
   ],
   "paths": {
+    "/consumer-user/search": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Search for a consumer user.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "example": "firstName"
+                },
+                "value": {
+                  "type": "string",
+                  "example": "John"
+                }
+              },
+              "required": [
+                "field",
+                "value"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/consumer-user/": {
       "post": {
         "description": "",
@@ -18,7 +58,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Add new user.",
+            "description": "Add new consumer user.",
             "schema": {
               "$ref": "#/components/schemas/ConsumerUser"
             }
@@ -32,17 +72,51 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/consumer-user/{id}": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Retrieve consumer user."
+          }
+        ],
         "responses": {
-          "202": {
-            "description": "Accepted"
+          "200": {
+            "description": "Got a specific user.",
+            "schema": {
+              "$ref": "#/components/schemas/ConsumerUser"
+            }
+          },
+          "404": {
+            "description": "Failed to get a specific user."
           }
         }
       },
       "put": {
         "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Consumer user id"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update consumer user",
+            "schema": {
+              "$ref": "#/components/schemas/ConsumerUser"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -51,19 +125,20 @@
       },
       "delete": {
         "description": "",
-        "responses": {
-          "default": {
-            "description": ""
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
-        }
-      }
-    },
-    "/consumer-user/search": {
-      "get": {
-        "description": "",
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
