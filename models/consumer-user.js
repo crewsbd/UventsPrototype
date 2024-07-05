@@ -13,6 +13,7 @@ const ConsumerUser = database.define('ConsumerUser', {
     role: {
         type: Sequelize.DataTypes.ENUM,
         values: ['consumerUser, commercialUser, adminUser'],
+        defaultValue: 'consumerUser',
         allowNull: false,
     },
     username: {
@@ -53,14 +54,10 @@ const ConsumerUser = database.define('ConsumerUser', {
     },
     gender: {
         type: Sequelize.DataTypes.ENUM,
-        values: ['male', 'female'],
+        values: ['male', 'female', 'unspecified'],
+        defaultValue: 'unspecified',
         allowNull: false,
     },
-});
-
-//Event.belongsTo(CommercialUser, {foreignKey: 'commercialUserId'});
-database.sync().then(() => {
-    console.log('Models synced');
 });
 
 module.exports = ConsumerUser;

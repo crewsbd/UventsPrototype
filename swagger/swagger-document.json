@@ -1,0 +1,157 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Uvents API",
+    "description": "An API to perform CRUD operations on the Uvents.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/consumer-user/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new user.",
+            "schema": {
+              "$ref": "#/components/schemas/ConsumerUser"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/consumer-user/search": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ConsumerUser": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "ConsumerUser",
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "First name of the consumer user"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the consumer user"
+          },
+          "role": {
+            "type": "integer",
+            "description": "Role enumeration. [consumerUser,commercialUser,adminUser]. TODO: Is this redundant?"
+          },
+          "username": {
+            "type": "string",
+            "description": "Username used by the consumer user for login purposes"
+          },
+          "socialMediaID": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}$",
+            "description": "8-character hexadecimal identifier for social media integration"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 10,
+            "pattern": "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>]).{6,}$",
+            "description": "Password must be at least 6 characters long, contain one special character, one uppercase letter, and one number"
+          },
+          "passwordReset": {
+            "type": "boolean",
+            "description": "Flag indicating if the consumer user's password has been reset"
+          },
+          "resetTokenExpiration": {
+            "type": "integer",
+            "description": "Timestamp in milliseconds indicating when the password expires",
+            "minimum": 1718390400000,
+            "maximum": 253402300799999
+          },
+          "email": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "description": "Email address of the consumer user"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "pattern": "^\\d{3}-\\d{3}-\\d{4}$",
+            "description": "Phone number of the consumer user"
+          },
+          "eventsAttended": {
+            "type": "integer",
+            "description": "Total number of events attended by the consumer user"
+          },
+          "eventsHosted": {
+            "type": "integer",
+            "description": "Total number of events hosted by the consumer user"
+          },
+          "gender": {
+            "type": "integer",
+            "description": "Gender identifier of the consumer user"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "role",
+          "username",
+          "socialMediaID",
+          "password",
+          "passwordReset",
+          "resetTokenExpiration",
+          "email",
+          "phoneNumber",
+          "eventsAttended",
+          "eventsHosted",
+          "gender"
+        ]
+      }
+    }
+  }
+}
