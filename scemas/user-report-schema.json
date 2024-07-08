@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UserReport",
+    "type": "object",
+    "properties": {
+      "ReportingUserID": {
+        "type": "integer",
+        "description": "The ID of the ConsumerUser who is reporting"
+      },
+      "ReportedUserID": {
+        "type": "integer",
+        "description": "The ID of the ConsumerUser being reported"
+      },
+      "ReportType": {
+        "type": "integer",
+        "description": "The enumerated type of the report. No Show/Spam/Fake Account"
+      },
+      "EventID": {
+        "type": "integer",
+        "description": "The ID of the event the report is referencing"
+      }
+    },
+    "required": ["ReportingUserID", "ReportedUserID", "ReportType", "EventID"]
+  }

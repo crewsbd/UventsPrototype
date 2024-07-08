@@ -1,0 +1,13 @@
+{
+    "Name": "John",
+    "Description": "This guy",
+    "Category": 3,
+    "Address": "123 Street",
+    "Phone": "123-123-1234",
+    "Email": "a@b.com",
+    "Website": true,
+    "Picture": 1718390400000,
+    "SocialMedia": "Linked in",
+    "ThirdPartyPayment": "Paypal",
+    "Verified": 3
+}

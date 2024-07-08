@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "GroupEvent",
+    "type": "object",
+    "properties": {
+        "OrganizerId": {
+            "type": "integer",
+            "description": "The index of the event organizer"
+        },
+        "StartTime": {
+            "type": "integer",
+            "description": "Timestamp indicating the start time of the event"
+        },
+        "EndTime": {
+            "type": "integer",
+            "description": "Timestamp indicating the end time of the event"
+        },
+        "Description": {
+            "type": "string",
+            "description": "Description of the group event"
+        },
+        "AddressId": {
+            "type": "integer",
+            "description": "The index of the address where the group event occurs"
+        },
+        "IsDate": {
+            "type": "boolean",
+            "description": "TODO: Is dating permitted?"
+        },
+        "MaxParticipants": {
+            "type": "integer",
+            "description": "Maximum participants allowed at the event"
+        }
+    },
+    "required": [
+        "OrganizerId",
+        "StartTime",
+        "EndTime",
+        "Description",
+        "AddressId",
+        "IsDate",
+        "MaxParticipants"
+    ]
+}

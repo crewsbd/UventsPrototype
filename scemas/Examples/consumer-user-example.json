@@ -1,0 +1,15 @@
+{
+    "FirstName": "Brian",
+    "LastName": "Crews",
+    "Role": 4,
+    "Username": "Brian",
+    "SocialMediaID": "4ff23c3d",
+    "Password": "#54v3$B^3bv4tC#T$CF#4tF3cT$",
+    "PasswordReset": true,
+    "ResetTokeExpiration": 1718390400000,
+    "email": "a@b.com",
+    "PhoneNumber": "123-456-7890",
+    "EventsAttended": 2,
+    "EventsHosted": 5,
+    "Gender": 1
+}

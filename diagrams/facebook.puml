@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor User
+
+rectangle Frontend {
+  rectangle "Input Validation" as IV
+}
+
+rectangle Backend {
+  rectangle "Authenticate User" as AU
+  rectangle "Validate and Enrich Post Data" as VE
+  rectangle "Log Activity" as LA
+  rectangle "Send to Facebook API" as SF
+}
+
+rectangle "Facebook API" as fbApi {
+  rectangle "Store Post Data" as SPD
+}
+
+User -> IV : Share Post Request
+IV -> AU : Send Post Data
+AU -> VE : Authenticate and Pass Data
+VE -> LA : Validate, Enrich, and Log Data
+LA -> SF : Send Post Data with Access Token
+SF -> SPD : Store Post Data
+SPD -> SF : Confirmation of Stored Post
+SF --> LA : Response with Post ID
+LA --> VE : Process Response
+VE --> AU : Pass Success Status and Post ID
+AU --> IV : Final Response
+IV --> User : Display Confirmation
+
+@enduml

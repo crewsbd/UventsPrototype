@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Event",
+    "type": "object",
+    "properties": {
+        "OrganizerId": {
+            "type": "integer",
+            "description": "The ID of the event organizer"
+        },
+        "Title": {
+            "type": "string",
+            "description": "The title of the event"
+        },
+        "Description": {
+            "type": "string",
+            "description": "Event description"
+        },
+        "Price": {
+            "type": "number",
+            "description": "The price of the event",
+            "minimum": 0
+        },
+        "Icon": {
+            "type": "string",
+            "description": "The resource locator of the event icon. TODO: How are they stored?"
+        },
+        "AddressId": {
+            "type": "integer",
+            "description": "The ID of the event address"
+        },
+        "StartTime": {
+            "type": "integer",
+            "description": "Timestamp indicating the start of the event"
+        },
+        "EndTime": {
+            "type": "integer",
+            "description": "Timestamp indicating the end of the event"
+        },
+        "Active": {
+            "type": "boolean",
+            "description": "Is the event currently active"
+        }
+    },
+    "required": [
+        "OrganizerId",
+        "Title",
+        "Description",
+        "Price",
+        "Icon",
+        "AddressId",
+        "StartTime",
+        "EndTime",
+        "Active"
+    ]
+}

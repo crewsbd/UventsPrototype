@@ -1,0 +1,31 @@
+@startuml
+title User Account JSON Schema
+
+class User {
+  + String id
+  + String username
+  + String email
+  + String password
+  + String firstName
+  + String lastName
+  + String createdAt
+  + String updatedAt
+}
+
+note right of User::username
+  Pattern: "^[a-zA-Z0-9_-]{3,16}$"
+end note
+
+note right of User::email
+  Pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+end note
+
+note right of User::createdAt
+  Pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+end note
+
+note right of User::updatedAt
+  Pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+end note
+
+@enduml

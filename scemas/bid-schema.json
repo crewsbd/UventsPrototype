@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Bid",
+    "type": "object",
+    "properties": {
+        "BusinessId": {
+            "type": "integer",
+            "description": "Index to a CommercialUser record"
+        },
+        "Month": {
+            "type": "integer",
+            "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            "description": "Month the bid was created",
+            "examples": [
+                { "value": 1, "description": "January" },
+                { "value": 2, "description": "February" },
+                { "value": 3, "description": "March" },
+                { "value": 4, "description": "April" },
+                { "value": 5, "description": "May" },
+                { "value": 6, "description": "June" },
+                { "value": 7, "description": "July" },
+                { "value": 8, "description": "August" },
+                { "value": 9, "description": "September" },
+                { "value": 10, "description": "October" },
+                { "value": 11, "description": "November" },
+                { "value": 12, "description": "December" }
+            ]
+        },
+        "Year": {
+            "type": "integer",
+            "minimum": 1900,
+            "description": "Year the bid was created"
+        },
+        "Amount": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Bid amount"
+        },
+        "Paid": {
+            "type": "boolean",
+            "description": "Payment status of the bid"
+        }
+    },
+    "required": ["BusinessId", "Month", "Year", "Amount", "Paid"]
+}

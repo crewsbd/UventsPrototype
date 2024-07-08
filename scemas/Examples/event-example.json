@@ -1,0 +1,11 @@
+{
+    "OrganizerId": 1,
+    "Title": "Happy Fun Event",
+    "Description": "It's happy and fun.",
+    "Price": 20.45,
+    "Icon": "Blob.jpg",
+    "AddressId": 3,
+    "StartTime": 1718390400000,
+    "EndTime": 1718390700000,
+    "Active": true
+}

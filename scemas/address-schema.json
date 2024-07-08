@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Address",
+    "type": "object",
+    "properties": {
+        "Originator": {
+            "type": "integer",
+            "description": "Index referencing a ConsumerUser record"
+        },
+        "Line1": {
+            "type": "string",
+            "description": "Street address line 1"
+        },
+        "Line2": {
+            "type": "string",
+            "description": "Street address line 2 (optional)"
+        },
+        "City": {
+            "type": "string",
+            "description": "City of the address"
+        },
+        "StateId": {
+            "type": "integer",
+            "description": "Index referencing State record. TODO. find table or algorithm this references"
+        }
+    },
+    "required": ["Originator", "Line1", "City", "StateId"]
+}

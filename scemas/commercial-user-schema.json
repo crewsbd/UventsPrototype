@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "CommercialUser",
+    "type": "object",
+    "properties": {
+        "Name": {
+            "type": "string",
+            "description": "The name of the commercial user"
+        },
+        "Description": {
+            "type": "string",
+            "description": "A brief description of the commercial user"
+        },
+        "Category": {
+            "type": "integer",
+            "description": "The category ID associated with the commercial user",
+            "enum": [1, 2, 3, 4, 5]
+        },
+        "Address": {
+            "type": "string",
+            "description": "The address of the commercial user"
+        },
+        "Phone": {
+            "type": "string",
+            "description": "The phone number of the commercial user",
+            "pattern": "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+        },
+        "Email": {
+            "type": "string",
+            "description": "The email address of the commercial user",
+            "format": "email"
+        },
+        "Website": {
+            "type": "boolean",
+            "description": "Is there a website?"
+        },
+        "Picture": {
+            "type": "integer",
+            "description": "Timestamp of the picture associated with the commercial user",
+            "format": "int64"
+        },
+        "SocialMedia": {
+            "type": "string",
+            "description": "The social media profile of the commercial user"
+        },
+        "ThirdPartyPayment": {
+            "type": "string",
+            "description": "The third-party payment system used by the commercial user. Paypal/Google pay"
+        },
+        "Verified": {
+            "type": "integer",
+            "description": "Verification status ID of the commercial user"
+        }
+    },
+    "required": [
+        "Name",
+        "Description",
+        "Category",
+        "Address",
+        "Phone",
+        "Email",
+        "Website",
+        "Picture",
+        "SocialMedia",
+        "ThirdPartyPayment",
+        "Verified"
+    ]
+}

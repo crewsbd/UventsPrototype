@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "Originator": {
+            "type": "integer",
+            "description": "The ID of the originating ConsumerUser"
+        },
+        "ConversationId": {
+            "type": "integer",
+            "description": "The ID of the Conversation record"
+        },
+        "Content": {
+            "type": "string",
+            "description": "The content of the message"
+        },
+        "Date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date in YYYY-MM-DD format"
+        },
+        "Time": {
+            "type": "string",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$",
+            "description": "The time in HH:MM:SS format"
+        },
+        "Status": {
+            "type": "boolean",
+            "description": "The status of the message"
+        }
+    },
+    "required": [
+        "Originator",
+        "ConversationId",
+        "Content",
+        "Date",
+        "Time",
+        "Status"
+    ]
+}

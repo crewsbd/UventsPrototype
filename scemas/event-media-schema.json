@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "EventMedia",
+    "type": "object",
+    "properties": {
+        "EventId": {
+            "type": "integer",
+            "description": "The ID of the event this media belongs to."
+        },
+        "Media": {
+            "type": "string",
+            "description": "The event media data. TODD: is this a URL or a Base64-encoded."
+        }
+    },
+    "required": ["EventId", "Media"]
+}

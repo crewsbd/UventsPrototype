@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "EventParticipant",
+    "type": "object",
+    "properties": {
+        "ConsumerUserId": {
+            "type": "integer",
+            "description": "The index of the consumer user participant"
+        },
+        "GroupEventId": {
+            "type": "integer",
+            "description": "The index of the group event the user is attending"
+        },
+        "ApprovalStatus": {
+            "type": "boolean",
+            "description": "Indicates whether the participant has been approved by the event organizer"
+        }
+    },
+    "required": ["ConsumerUserId", "GroupEventId", "ApprovalStatus"]
+}

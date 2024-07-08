@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Hours",
+    "type": "object",
+    "properties": {
+        "BusinessId": {
+            "type": "integer",
+            "description": "Index referencing a CommercialUser record"
+        },
+        "Open": {
+            "type": "boolean",
+            "description": "List whether a slot is open to be booked for an event"
+        },
+        "Day": {
+            "type": "integer",
+            "description": "List open days that events can take place on."
+        },
+        "Time": {
+            "type": "integer",
+            "description": "List the time of the event. This is a timestamp"
+        }
+    },
+    "required": ["BusinessId", "Open", "Day", "Time"]
+}

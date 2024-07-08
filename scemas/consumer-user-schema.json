@@ -1,0 +1,81 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ConsumerUser",
+    "type": "object",
+    "properties": {
+        "FirstName": {
+            "type": "string",
+            "description": "First name of the consumer user"
+        },
+        "LastName": {
+            "type": "string",
+            "description": "Last name of the consumer user"
+        },
+        "Role": {
+            "type": "integer",
+            "description": "Role enumeration. [consumerUser,commercialUser,adminUser]. TODO: Is this redundant?"
+        },
+        "Username": {
+            "type": "string",
+            "description": "Username used by the consumer user for login purposes"
+        },
+        "SocialMediaID": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}$",
+            "description": "8-character hexadecimal identifier for social media integration"
+        },
+        "Password": {
+            "type": "string",
+            "minLength": 10,
+            "pattern": "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>]).{6,}$",
+            "description": "Password must be at least 6 characters long, contain one special character, one uppercase letter, and one number"
+        },
+        "PasswordReset": {
+            "type": "boolean",
+            "description": "Flag indicating if the consumer user's password has been reset"
+        },
+        "ResetTokenExpiration": {
+            "type": "integer",
+            "description": "Timestamp in milliseconds indicating when the password expires",
+            "minimum": 1718390400000,
+            "maximum": 253402300799999
+        },
+        "Email": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "description": "Email address of the consumer user"
+        },
+        "PhoneNumber": {
+            "type": "string",
+            "pattern": "^\\d{3}-\\d{3}-\\d{4}$",
+            "description": "Phone number of the consumer user"
+        },
+        "EventsAttended": {
+            "type": "integer",
+            "description": "Total number of events attended by the consumer user"
+        },
+        "EventsHosted": {
+            "type": "integer",
+            "description": "Total number of events hosted by the consumer user"
+        },
+        "Gender": {
+            "type": "integer",
+            "description": "Gender identifier of the consumer user"
+        }
+    },
+    "required": [
+        "FirstName",
+        "LastName",
+        "Role",
+        "Username",
+        "SocialMediaID",
+        "Password",
+        "PasswordReset",
+        "ResetTokenExpiration",
+        "Email",
+        "PhoneNumber",
+        "EventsAttended",
+        "EventsHosted",
+        "Gender"
+    ]
+}

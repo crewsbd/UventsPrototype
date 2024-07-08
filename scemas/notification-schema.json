@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Notification",
+    "type": "object",
+    "properties": {
+        "ConsumerReceiver": {
+            "type": "integer",
+            "description": "Index to a ConsumerUser table"
+        },
+        "Type": {
+            "type": "integer",
+            "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            "description": "Enumerated type of the notification.",
+            "examples": [
+                { "value": 1, "description": "Commercial" },
+                { "value": 2, "description": "Issue" },
+                { "value": 3, "description": "Consumer-Message" },
+                { "value": 4, "description": "Consumer-Event" },
+                { "value": 5, "description": "Consumer-Friend" },
+                { "value": 6, "description": "Consumer-Group" },
+                { "value": 7, "description": "Consumer-Nearby" },
+                { "value": 8, "description": "Admin-Message" },
+                { "value": 9, "description": "Admin-Event" },
+                { "value": 10, "description": "Admin-Commercial-Created" },
+                { "value": 11, "description": "Admin-Flagged" },
+                { "value": 12, "description": "Admin-Ticket" }
+            ]
+        }
+    },
+    "required": ["ConsumerReceiver", "Type"]
+}
