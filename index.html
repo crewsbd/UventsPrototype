@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=900, initial-scale=1.0" />
+        <title>Uvents</title>
+        <style>
+            div.forms {
+                display: flexbox;
+                flex-direction: row;
+            }
+            div.forms form {
+                width: 20rem;
+                padding: 1rem;
+                border-radius: .5rem;
+                background-color: #ddd;
+            }
+            form {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Uvents</h1>
+        <p>
+            The uvents app page will go here. These are just some helper forms,
+            to test functionality
+        </p>
+        <div class="forms">
+            <form id="paymentForm">
+                <label for="amount">Amount:</label><br />
+                <input
+                    type="text"
+                    id="amount"
+                    name="amount"
+                    required
+                /><br /><br />
+
+                <label for="currency">Currency:</label><br />
+                <select id="currency" name="currency" required>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option></select
+                ><br /><br />
+
+                <button type="button" onclick="submitForm()">Submit</button>
+            </form>
+        </div>
+        <script>
+            function submitForm() {
+                const formData = {
+                    amount: document.getElementById('amount').value,
+                    currency: document.getElementById('currency').value,
+                };
+
+                fetch('https://6943-99-67-17-64.ngrok-free.app/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log('Success:', data);
+                        // Handle success, such as showing a success message to the user
+                        alert('Payment successfully submitted!');
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        // Handle error, such as showing an error message to the user
+                        alert(
+                            'Error submitting payment. Please try again later.'
+                        );
+                    });
+            }
+        </script>
+    </body>
+</html>

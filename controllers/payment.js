@@ -1,49 +1,67 @@
 const paypal = require('paypal-rest-sdk');
+const ngrok = require('@ngrok/ngrok');
 
+/**
+ *
+ * @param {import('express').Request} request
+ * @param {import('express').Response} response
+ */
 const createPayment = async (request, response) => {
-    const amount = request.body.amount;
-    const currency = request.body.currency || 'USD';
-
     console.log('PAYMENT PROCESSING BEGUN');
+    
     // Make a payment to send to paypal
-    const payment_json = {
-        intent: 'sale',
-        payer: {
-            payment_method: 'paypal',
-        },
-        redirect_urls: {
-            return_url: 'http://localhost:3000/payment/paypal-success',
-            cancel_url: 'http://localhost:3000/payment/paypal-cancel',
-        },
-        transactions: [
-            {
-                amount: {
-                    total: amount,
-                    currency: currency,
-                },
-            },
-        ],
-    };
+    if (request.body.paymentGateway == 'paypal') {
+        const amount = request.body.amount;
+        const currency = request.body.currency || 'USD';
+        const url = global.ngrokURL || 'http://localhost:3000';
 
-    // Create the payment, send it to paypal, handle callback
-    try {
-        paypal.payment.create(payment_json, function (error, payment) {
-            if (error) {
-                throw error;
-            } else {
-                // Capture the approval URL from the response and redirect client to it
-                // Success or Cancel. Both?
-                for (let i = 0; i < payment.links.length; i++) {
-                    if (payment.links[i].rel === 'approval_url') {
-                        console.log(`Redirecting to ${payment.links[i].href}`);
-                        response.redirect(payment.links[i].href);
+
+        const payment_json = {
+            intent: 'sale',
+            payer: {
+                payment_method: 'paypal',
+            },
+            redirect_urls: {
+                return_url: `${url}/payment/paypal-success`,
+                cancel_url: `${url}/payment/paypal-cancel`,
+            },
+            transactions: [
+                {
+                    amount: {
+                        total: amount,
+                        currency: currency,
+                    },
+                },
+            ],
+        };
+
+        // Create the payment, send it to paypal, handle callback
+
+        try {
+            paypal.payment.create(payment_json, function (error, payment) {
+                if (error) {
+                    throw error;
+                } else {
+                    // Capture the approval URL from the response and redirect client to it
+                    // Success or Cancel. Both?
+                    for (let i = 0; i < payment.links.length; i++) {
+                        if (payment.links[i].rel === 'approval_url') {
+                            console.log(
+                                `Redirecting to ${payment.links[i].href}`
+                            );
+                            response.redirect(payment.links[i].href);
+                        }
                     }
                 }
-            }
-        });
-    } catch (error) {
-        console.error(error);
-        response.status(500).json({ ERROR: 'Internal Server Error' });
+            });
+        } catch (error) {
+            console.error(error);
+            response.status(500).json({ ERROR: 'Internal Server Error' });
+        }
+    } else if (request.body.paymentGateway == 'google pay') {
+        const paymentMethodData = request.body.paymentMethodData;
+        const token = paymentMethodData.tokenizationData.token;
+        // call the processor api with token and payment data
     }
 };
 
